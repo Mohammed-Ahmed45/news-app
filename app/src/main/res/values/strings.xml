@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">News-App</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="somthing_went_to_wrang" />
+    <string name="lodaing">Lodaing...</string>
+    <string name="view_full_article">view full article\n</string>
+</resources>
