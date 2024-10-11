@@ -5,4 +5,7 @@
     <string name="somthing_went_to_wrang" />
     <string name="lodaing">Lodaing...</string>
     <string name="view_full_article">view full article\n</string>
+    <string name="nav_header_desc">nav header desc</string>
+    <string name="menu_settings">menu settings</string>
+    <string name="menu_categories">menu categories</string>
 </resources>

@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.mohamed.news_app.MainActivity
 import com.mohamed.news_app.R
 import com.mohamed.news_app.databinding.FragmentCategoriesBinding
 
@@ -43,6 +44,10 @@ class CategoriesFragment : Fragment()
         position, category ->
             navigateToNews(category)
         }
+    }
+    override fun onStart() {
+        super.onStart()
+        (requireActivity() as MainActivity).setCustomToolbarTitle(getString(R.string.app_name))
     }
 
     private fun navigateToNews(category: Category)
