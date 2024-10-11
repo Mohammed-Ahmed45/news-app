@@ -1,6 +1,7 @@
 package articlesDetailes
 
-import Base.UiMessage
+
+import Base.UIMessage
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
@@ -8,7 +9,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import api.WebServices
-import com.mohamed.news_app.R
+
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -32,7 +33,8 @@ class ArticlesDetalilesViewModel @Inject constructor
 
     val article: LiveData<Articles> get() = _article
 
-    val uiMessage=MutableLiveData<UiMessage>()
+    private val _uiMessage = MutableLiveData<UIMessage>()
+    val uiMessage: LiveData<UIMessage> get() = _uiMessage
 
     fun getArticle(title:String){
 //        webServices.getArticle(searchIn = title)
@@ -42,12 +44,15 @@ class ArticlesDetalilesViewModel @Inject constructor
                 .enqueue(object :Callback<ArticlesResponse>{
                     override fun onFailure(call: Call<ArticlesResponse>, ex: Throwable)
                     {
-                        uiMessage.postValue(UiMessage(
-                            showLodaing = false,
-                            exeption = ex,
-                            onPosClick = {
-                                getArticle(title)
-                            }))
+
+                        _uiMessage.postValue(
+                            UIMessage(
+                                isLoading = false,
+                                errorMessage = ex.localizedMessage,
+                                posAction = {
+                                    getArticle(title)
+                                })
+                        )
 
                 }
 
@@ -56,13 +61,20 @@ class ArticlesDetalilesViewModel @Inject constructor
                         response: Response<ArticlesResponse>
                     )
                     {
-                        uiMessage.postValue(UiMessage(
-                            showLodaing = false
-                        ))
                         if (response.isSuccessful){
                             _article.postValue(response.body()?.articles?.get(0))
 
                         }
+                        _uiMessage.postValue(
+                            UIMessage(
+                                isLoading = false,
+                                shouldDisplayNoArticlesFound = response.body()?.articles!!.isEmpty(),
+                                posAction = {
+                                    getArticle(title)
+                                }
+                            )
+                        )
+
                     }
 
                     })
