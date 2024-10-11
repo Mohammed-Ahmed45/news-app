@@ -1,7 +1,8 @@
 package newsFragment
 
-import Base.UiMessage
+import Base.UIMessage
 import Categories.Category
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
@@ -24,10 +25,13 @@ class NewsViewModel @Inject constructor(
 ): ViewModel()
 {
     private val categoryParam="category"
-    val uiMessage=MutableLiveData<UiMessage>()
+
     val sourceLiveData=MutableLiveData<List<NewsSources?>?>()
     val articleLiveData=MutableLiveData<List<Articles?>?>()
     private val category:Category? = savedStateHandle[categoryParam]
+
+    private val _uiMessage = MutableLiveData<UIMessage>()
+    val uiMessage: LiveData<UIMessage> get() = _uiMessage
 
     fun searchArticles(query: String?): List<Articles?>?  {
         return articleLiveData.value?.filter { product ->
@@ -41,10 +45,6 @@ class NewsViewModel @Inject constructor(
 
     fun getNewsSources()
     {
-        uiMessage.value=UiMessage(
-            showLodaing = true,
-            messageId = R.string.lodaing
-        )
 
         // 1->get api of NewsSource
         webServices
@@ -53,12 +53,13 @@ class NewsViewModel @Inject constructor(
             {
                 override fun onFailure(call: Call<SourcesResponse>, ex: Throwable)
                 {
-                    uiMessage.value=UiMessage(
-                        showLodaing = false,
-                        exeption = ex,
-                        onPosClick = {
-                            getNewsSources()
-                        }
+                    _uiMessage.postValue(
+                        UIMessage(
+                            isLoading = false,
+                            errorMessageId = R.string.connection_error,
+                            posAction = {
+                                getNewsSources()
+                            })
                     )
                 }
 
@@ -66,7 +67,7 @@ class NewsViewModel @Inject constructor(
                 {
                     if (response.isSuccessful){
                     sourceLiveData.value=response.body()?.sources
-
+                        _uiMessage.postValue(UIMessage(isLoading = true))
                     }
 
 
@@ -87,24 +88,21 @@ class NewsViewModel @Inject constructor(
             .enqueue(object :Callback<ArticlesResponse>{
                 override fun onFailure(call: Call<ArticlesResponse>, ex: Throwable)
                 {
-                    uiMessage.value=UiMessage(
-                        showLodaing = false,
-                        exeption = ex,
-                        onPosClick ={
-                            getNewsSources()
-                        }
-
+                    _uiMessage.postValue(
+                        UIMessage(
+                            isLoading = false,
+                            errorMessageId = R.string.connection_error,
+                            posAction = {
+                                getNewsSources()
+                            })
                     )
                 }
 
                 override fun onResponse(call: Call<ArticlesResponse>, response: Response<ArticlesResponse>)
                 {
-                    uiMessage.value=UiMessage(
-                        showLodaing = false
-
-                    )
                     if (response.isSuccessful){
                         articleLiveData.value=response.body()?.articles
+                        _uiMessage.postValue(UIMessage(isLoading = true))
                     }
 
                 }

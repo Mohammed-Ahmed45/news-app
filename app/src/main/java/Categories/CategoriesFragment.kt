@@ -1,7 +1,6 @@
 package Categories
 
 import Adabter.CategoriesAdabter
-import Base.BaseFragment
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View

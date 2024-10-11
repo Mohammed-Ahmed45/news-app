@@ -3,11 +3,8 @@ package com.mohamed.news_app
 import android.graphics.PorterDuff
 import android.os.Bundle
 import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -15,7 +12,6 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.mohamed.news_app.databinding.ActivityMainBinding
-import com.mohamed.news_app.databinding.ItemProductBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

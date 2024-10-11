@@ -1,21 +1,14 @@
 package Base
 
-data class UiMessage(
-    var showLodaing:Boolean ?=null,
-    var message:String ?=null,
-    var messageId: Int ?=null,
+import androidx.annotation.StringRes
 
-    var posButtonId:Int ?=null,
-    var posButtonText:String ?=null,
-    var onPosClick:OnDialogClick ?=null,
-
-    var negButtonId:Int ?=null,
-    var negButtonText:String ?=null,
-    var onNegClick:OnDialogClick ?=null,
-
-    var isCancelable:Boolean =true,
-    var exeption:Throwable ?=null
-
+data class UIMessage(
+    var isLoading: Boolean = false,
+    var posAction: (() -> Unit)? = null,
+    var errorMessage: String? = null,
+    @StringRes var errorMessageId: Int? = null,
+    var shouldDisplayNoArticlesFound: Boolean = false,
+    var requestingNextPage: Boolean = false
 )
 fun interface OnDialogClick
 {
