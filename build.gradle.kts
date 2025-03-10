@@ -1,17 +1,11 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
-plugins {
-    alias(libs.plugins.androidApplication) apply false
-    alias(libs.plugins.jetbrainsKotlinAndroid) apply false
-    alias(libs.plugins.kotlin.parcelize) apply false
-    id("com.google.dagger.hilt.android") version "2.51.1" apply false
 
-}
-buildscript {
-    repositories {
-        google()
-    }
-    dependencies {
-        val nav_version = "2.8.0"
-        classpath(libs.androidx.navigation.safe.args.gradle.plugin)
-    }
+plugins {
+    alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.jetbrains.kotlin.android) apply false
+    alias(libs.plugins.parcelize) apply false
+    alias(libs.plugins.kapt) apply false
+    alias(libs.plugins.hilt) apply false
+    alias(libs.plugins.androidx.navigation.safeargs) apply false
+
+
 }

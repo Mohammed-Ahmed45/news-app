@@ -13,12 +13,6 @@
     <string name="pick_category">Pick your category\nof interest</string>
     <string name="language">Language</string>
     <string name="view_full_article">View Full Article</string>
-    <string name="sports">Sports</string>
-    <string name="technology">Technology</string>
-    <string name="health">Health</string>
-    <string name="business">Business</string>
-    <string name="entertainment">Entertainment</string>
-    <string name="science">Science</string>
     <string name="search_hint">Search Article</string>
     <string name="english">English</string>
     <string name="arabic">Arabic</string>
@@ -28,6 +22,12 @@
     <string name="connection_error">Check your internet connection then retry again</string>
     <string name="no_connection">No connection</string>
     <string name="lodaing">lodaing</string>
+    <string name="sports">Sports</string>
+    <string name="business">business</string>
+    <string name="entertainment">entertainment</string>
+    <string name="general">general</string>
+    <string name="health">health</string>
+    <string name="science">science</string>
 
     <string-array name="languages">
         <item>English</item>

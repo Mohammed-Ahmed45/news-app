@@ -12,7 +12,7 @@ interface WebServices
     fun getNewsSources(
         @Query ("apiKey") authKey:String= "397c92fdf44e4c14aaa358ea0e255765"
         ,@Query ("category") category:String
-    ):Call<SourcesResponse>
+    ): Call<SourcesResponse>
 
     @GET ("/v2/everything")
 
