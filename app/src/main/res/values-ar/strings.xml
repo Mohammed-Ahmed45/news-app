@@ -8,7 +8,7 @@
     <string name="language">اللغة</string>
     <string name="view_full_article">لقراءة المزيد</string>
     <string name="sports">الرياضة</string>
-    <string name="technology">التقنية</string>
+    <string name="general">عام</string>
     <string name="health">الصحة</string>
     <string name="business">إدارة الأعمال</string>
     <string name="entertainment">الترفيه</string>
@@ -23,6 +23,8 @@
     <string name="connection_error">الرجاء التأكد من اتصالك بالانترنت ثم أعد المحاولة</string>
     <string name="no_connection">لا يوجد انترنت</string>
     <string name="lodaing">lodaing</string>
+
+
     <string-array name="languages">
         <item>@string/english</item>
         <item>@string/arabic</item>

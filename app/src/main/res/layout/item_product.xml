@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     app:cardBackgroundColor="#C91C22"
     app:cardCornerRadius="20dp"
     app:contentPadding="12dp"
@@ -25,7 +24,7 @@
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sports"
+            android:text="@string/sports"
             android:textColor="@color/white"
             android:textSize="22sp"/>
     </LinearLayout>

@@ -7,9 +7,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mohamed.news_app.databinding.ItemProductBinding
 
-class CategoriesAdabter( val categories : List<Category>):RecyclerView.Adapter<CategoriesAdabter.ViewHolder>()
+//
+class CategoriesAdabter(val categories: List<Category>) :
+    RecyclerView.Adapter<CategoriesAdabter.ViewHolder>()
 {
-    class ViewHolder(var binding:ItemProductBinding):RecyclerView.ViewHolder(binding.root)
+    class ViewHolder(var binding: ItemProductBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder
     {

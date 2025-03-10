@@ -4,7 +4,6 @@ import android.os.Parcelable
 import com.mohamed.news_app.R
 import kotlinx.parcelize.Parcelize
 
-
 @Parcelize
 data class Category(
 
@@ -58,29 +57,6 @@ data class Category(
         }
     }
 }
-//    companion object{
-//        fun getProducts():List<Categories>
-//        {
-//            return listOf(
-//                Categories(
-//
-//
-//                ),
-//                Categories(
-//
-//                ),
-//                Categories(
-//
-//                ),
-//                Categories(
-//
-//                ),
-//                Categories(
-//
-//                )
-//
-//            )
-//        }
-//    }
+
 
 
